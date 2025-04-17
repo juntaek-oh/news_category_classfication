@@ -7,7 +7,7 @@ import time
 import pandas as pd
 import datetime
 
-category = ['Politiccs', 'Economic', 'Social', 'Culture', 'World', 'IT']
+category = ['Politics', 'Economic', 'Social', 'Culture', 'World', 'IT']
 df_titles = pd.DataFrame()
 xpath_roots = [
     'div[4]/div/div[2]',  # Politics
@@ -18,7 +18,7 @@ xpath_roots = [
     'div[4]/div/div[2]'   # IT
 ]
 title_roots = [
-    'div[4]/div/div[1]',  # Politiccs
+    'div[4]/div/div[1]',  # Politics
     'div[5]/div/div[1]',  # Economic
     'div[4]/div/div[1]',  # Social
     'div[4]/div/div[1]',  # Culture
@@ -45,8 +45,8 @@ for outer_i in range(0,2):  # 준택님 2,4     민정님 4,6
         try:
             driver.find_element(By.XPATH, button_xpath).click()
         except:
-            print(i)
-    time.sleep(5)
+            break
+
     for i in range(1, 900):
         for j in range(1, 7):
             title_path = '//*[@id="newsct"]/{}/div[{}]/ul/li[{}]/div/div/div[2]/a/strong'.format(title_root, i, j)
