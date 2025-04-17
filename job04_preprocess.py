@@ -78,7 +78,7 @@ x_pad = pad_sequences(tokened_x, max) # max에 맞는 길이 맞춰주기  [ 0  
 print(x_pad) #  [   0    0    0 ... 2359  279 1936]]
 
 x_train, x_test, y_train, y_test = train_test_split(
-    x_pad, onehot_y, test_size=0.1)
+    x_pad, onehot_y, test_size=0.1)  # 표본의 0.9 의 트레인 0.1 의 테스트 나눔
 print(x_train.shape, y_train.shape)
 print(x_test.shape, y_test.shape)
 
