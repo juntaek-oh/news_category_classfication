@@ -58,7 +58,7 @@ for idx, sentence in enumerate(X):
 
 print(X) # 형태소로 볼때 방해되는거 다 제거한 후 결과
 
-token = Tokenizer()
+token = Tokenizer()   # 앞에 0 넣는 이유는 RNN이 기억을 잃어버리는 특성이 있어서 마지막에 0 넣으면 결과값이 0으로 나옴
 token.fit_on_texts(X) # 형태소 받아서 토큰화 시키는 코드
 tokened_x = token.texts_to_sequences(X) #형태소를 번호를 바꿔주는 코드
 print(tokened_x) # 토큰화 시킨거
