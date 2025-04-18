@@ -61,8 +61,21 @@ print(preds)
 
 predict_section = []
 for pred in preds:
-    predict_section.append( label[np.argmax(pred)])
+    # predict_section.append(label[np.argmax(pred)]) 하나 확인 하는 코드
+    most = label[np.argmax(pred)]
+    pred[np.argmax(pred)] = 0
+    second =  label[np.argmax(pred)]
+    predict_section.append([most, second])
 print(predict_section)
 
 df['predict'] = predict_section
-print(df.head(30))
+print(df[['category', 'predict']].head(30))
+
+score = model.evaluate(x_pad, onehot_y)
+print(score[1])     # 0.587
+
+df['OX'] = 0
+for i in range(len(df)):
+    if df.loc[i, 'category'] in df.loc[i, 'predict']:
+        df.loc[i, 'OX'] = 1
+print(df.OX.mean())
